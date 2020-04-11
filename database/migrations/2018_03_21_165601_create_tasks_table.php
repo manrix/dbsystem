@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateTasksTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->string('name');
+            $table->string('token')->unique();
+            $table->string('file_name', 255);
+            $table->boolean('file_name_timestamp');
+            $table->boolean('status');
+            $table->boolean('not_save_locally')->default(0);
+            $table->boolean('send_to_email')->default(0);
+            $table->string('email', 255)->nullable();
+            $table->text('description')->nullable();
+            $table->dateTime('executed_at')->nullable();
+            $table->timestamps();
+            $table->index('user_id');
+            $table->index('name');
+            $table->index('token');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tasks');
+    }
+}

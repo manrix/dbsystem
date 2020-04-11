@@ -1,0 +1,358 @@
+@import "~bulma/sass/utilities/initial-variables.sass";
+
+// overwrite bulma variables
+$blue: hsl(217, 100%, 50%);
+$red: hsl(354, 82%, 58%);
+$white-ter: hsl(220, 20%, 97%);
+$body-background-color: $white;
+$hr-background-color: hsl(0, 0%, 95%);
+$radius: 3px;
+$input-shadow: none;
+$input-border-color: hsl(0, 0%, 84%);
+$input-hover-border-color: $grey-light;
+$button-padding-horizontal: .85rem;
+$box-radius: $radius-small;
+$box-shadow: 0px 0px 0px 2px hsl(0, 0%, 92%);
+$navbar-box-shadow-color: hsl(0, 0%, 92%);
+$navbar-box-shadow-size: 0 3px 0 0;
+$navbar-dropdown-boxed-radius: 3px;
+$footer-background-color: $white-ter;
+$modal-background-background-color: rgba($black, 0.7);
+$modal-card-title-size: 1.2rem;
+$modal-card-head-background-color: $white-ter;
+$modal-card-foot-background-color: $white-ter;
+$modal-card-head-radius: $radius;
+$modal-card-foot-radius: $radius;
+$card-header-weight: $weight-semibold;
+$card-footer-background-color: $white-ter;
+$card-shadow: $box-shadow;
+$message-radius: $radius-small;
+$message-header-radius: $radius-small;
+$tabs-border-bottom-width: 2px;
+$tabs-border-bottom-color: hsl(0, 0%, 92%);
+$tabs-toggle-link-border-width: 2px;
+
+// buefy variables
+$checkbox-active-background-color: $blue;
+
+// timeline variables
+$timeline-item-padding-bottom: 1rem;
+$timeline-content-padding: 1em 1em 0 2em;
+
+// quickview variables
+$quickview-shadow: 5px 0px 13px 3px rgba($grey-dark, 0.3) !default
+
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+@import "~bulma-timeline/src/sass/index.sass";
+@import "icomoon.scss";
+@import "~bulma-quickview/src/sass/index";
+
+$placeholders: ':-moz-placeholder' ':-webkit-input-placeholder' '-moz-placeholder' '-ms-input-placeholder';
+
+html, body {
+    min-height: 100vh;
+}
+
+.loading-overlay {
+    z-index: 100;
+}
+
+.tooltip:after {
+    border-radius: $radius-small;
+}
+
+@each $placeholder in $placeholders {
+    .input:#{$placeholder} {
+        color: $grey-dark;
+    }
+
+    .taginput .taginput-container.is-focusable:#{$placeholder} {
+        color: $grey-dark;
+    }
+
+    .textarea:#{$placeholder} {
+        color: $grey-dark;
+    }
+}
+
+.button {
+    font-weight: $weight-semibold;
+
+    &.is-transparent {
+        background-color: transparent;
+        border-color: transparent;
+    }
+}
+
+@media screen and (min-width: $tablet) {
+    .field-label .label {
+        text-align: left;
+    }
+}
+
+.notices {
+    .toast {
+        border-radius: 3px;
+        opacity: 0.95;
+    }
+}
+
+.b-checkbox.checkbox {
+    input[type="checkbox"] + .check {
+        border-radius: 2px;
+        border-width: 2px;
+        border-color: $grey-light;
+    }
+
+    &:focus {
+        input[type=checkbox] + .check {
+            box-shadow: none;
+        }
+        input[type=checkbox]:checked + .check {
+            box-shadow: none;
+        }
+    }
+}
+
+.is-justified-center {
+    justify-content: center;
+}
+
+.app-navigation {
+    border-bottom: 1px solid $white;
+    position: relative;
+    z-index: 35;
+
+    .navbar-brand {
+        font-weight: 600;
+
+        .logo {
+            font-size: 1.3rem;
+        }
+
+        > .navbar-item {
+            &:hover, &:active, &.is-active {
+                background-color: transparent !important;
+            }
+
+            img {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .navbar-start {
+        .navbar-item {
+            text-transform: uppercase;
+            font-weight: $weight-semibold;
+
+            .icon {
+                font-size: .85em;
+                color: inherit;
+            }
+        }
+
+        a.navbar-item.is-active {
+            color: $blue;
+        }
+    }
+}
+
+@media screen and (min-width: $desktop) {
+    .app-navigation.is-link {
+        .navbar-start {
+            > a.navbar-item {
+                &.is-active {
+                    background-color: lighten($blue, 9);
+                }
+            }
+        }
+
+        .navbar-dropdown a.navbar-item.is-active {
+            background-color: transparent;
+            color: $blue;
+        }
+    }
+}
+
+@media screen and (max-width: $tablet) {
+    .app-navigation {
+        .navbar-start {
+            .navbar-item {
+                .icon {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.page-tools {
+    box-shadow: inset 0 -3px 0 0 $navbar-box-shadow-color;
+
+    .hero-body {
+        padding: 2.5rem 1.5rem;
+    }
+}
+
+@media screen and (max-width: $tablet) {
+    .page-tools {
+        .breadcrumb ul {
+            justify-content: center;
+        }
+    }
+}
+
+@media screen and (min-width: $tablet) {
+    .b-data-table {
+        table.has-mobile-cards {
+            .w-8 {
+                width: 8%;
+            }
+
+            .w-10 {
+                width: 10%;
+            }
+
+            .w-15 {
+                width: 15%;
+            }
+
+            .w-40 {
+                width: 40%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $tablet) {
+    .b-data-table {
+        table.has-mobile-cards {
+            background-color: transparent;
+            border: 1px solid transparent;
+        }
+
+        .table.has-mobile-cards  {
+            tr:not([class*="is-"]), tr:not([class*="is-"]):hover {
+                background-color: $white;
+            }
+        }
+    }
+}
+
+.modal-card-title {
+    font-weight: $weight-semibold;
+}
+
+.modal-card-body {
+    .upload-draggable {
+        display: block;
+    }
+}
+
+.b-data-table {
+    .table {
+        tr.is-checked {
+            background-color: $white-ter !important;
+        }
+
+        td {
+            vertical-align: middle;
+
+            .tags {
+                justify-content: center;
+            }
+        }
+        
+        th {
+            vertical-align: middle;
+        }
+
+        th:not(.checkbox-cell) {
+            font-size: .85rem;
+            text-transform: uppercase;
+        }
+    }
+
+    .level {
+        padding-bottom: 0;
+    }
+}
+
+.resources-table {
+    .table {
+        border: 2px solid hsl(0, 0%, 92%);
+
+        & th, & td {
+            border-color: hsl(0, 0%, 92%);
+        }
+    }
+}
+
+@media screen and (max-width: $tablet) {
+    .resources-table {
+        .table-tools {
+            .level-item {
+                margin-bottom: .5rem;
+            }
+
+            .field {
+                width: 100%;
+            }
+
+            .dropdown {
+                display: block;
+                width: 100%;
+
+                .button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: .9rem;
+    border-top: 1px solid $grey-lighter;
+}
+
+.quickview-header {
+    background-color: $white-ter;
+}
+
+.quickview-footer > .quickview-block {
+    width: 100%;
+}
+
+.activities-container {
+    .timeline .timeline-item {
+        margin-left: 0;
+        padding-left: 2em;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid hsl(0, 0%, 92%);
+        }
+
+        &::before {
+            width: 0;
+        }
+
+        .timeline-marker {
+            left: 1.60em;
+
+            &.is-icon {
+                left: 1.25em;
+            }
+        }
+    }
+}
+
+.box {
+    .tabs.is-navigation {
+        margin-bottom: calc(-1.25rem - 2px);
+    }
+}
